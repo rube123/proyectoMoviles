@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screeens/login_screen.dart';
 import 'package:flutter_application_1/utils/colors_app.dart';
 
 void main() => runApp(MyApp());
@@ -15,34 +16,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Practica 1'),
-          backgroundColor: Colors.blueAccent,
-        ),
-        body: Container(
-          child: Center(
-            child: Text(
-              'counter $contador',
-              style: TextStyle(
-                fontSize: 25,
-                fontFamily: 'Yourmate',
-                color: ColorsApp.txtColor,
-              ),
-            ),
-          ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.ads_click),
-          onPressed: () {
-            contador++;
-            print(contador);
-            setState(() {});
-          },
-        ),
-      ),
-    );
+    return MaterialApp(title: 'Material app', home: LoginScreen());
   }
 
   miEvento() {}
