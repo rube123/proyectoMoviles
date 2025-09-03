@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screeens/home_screen.dart';
 import 'package:flutter_application_1/screeens/login_screen.dart';
 import 'package:flutter_application_1/utils/colors_app.dart';
 
@@ -16,7 +17,12 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Material app', home: LoginScreen());
+    return MaterialApp(
+      theme: ThemeData.dark(),
+      routes: {"/home": (context) => HomeScreen()},
+      title: 'Material app',
+      home: LoginScreen(),
+    );
   }
 
   miEvento() {}
