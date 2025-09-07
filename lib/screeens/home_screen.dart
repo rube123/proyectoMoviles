@@ -1,5 +1,6 @@
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/utils/value_listener.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -20,9 +21,31 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.amber),
-      endDrawer: Drawer(),
-      drawer: Drawer(),,
+      appBar: AppBar(
+        backgroundColor: Colors.amber,
+        actions: [
+          ValueListenableBuilder(
+            valueListenable: ValueListener.isDark,
+            builder: (context, value, child) {
+              return value
+                  ? IconButton(
+                    icon: Icon(Icons.sunny),
+                    onPressed: () {
+                      ValueListener.isDark.value = false;
+                    },
+                  )
+                  : IconButton(
+                    icon: Icon(Icons.nightlight),
+                    onPressed: () {
+                      ValueListener.isDark.value = true;
+                    },
+                  );
+            },
+          ),
+        ],
+      ),
+
+      drawer: Drawer(),
       body: Center(child: Text("Menu de opciones")),
       bottomNavigationBar: Padding(
         padding: EdgeInsets.only(bottom: 10),
