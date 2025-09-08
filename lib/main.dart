@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screeens/home_screen.dart';
-import 'package:flutter_application_1/screeens/login_screen.dart';
+import 'package:flutter_application_1/screens/home_screen.dart';
+import 'package:flutter_application_1/screens/login_screen.dart';
+import 'package:flutter_application_1/screens/transform_screen.dart';
 import 'package:flutter_application_1/utils/colors_app.dart';
 import 'package:flutter_application_1/utils/theme_app.dart';
 import 'package:flutter_application_1/utils/value_listener.dart';
@@ -24,7 +25,10 @@ class _MyAppState extends State<MyApp> {
       builder: (context, value, _) {
         return MaterialApp(
           theme: value ? ThemeApp.darkTheme() : ThemeApp.lightTheme(),
-          routes: {"/home": (context) => HomeScreen()},
+          routes: {
+            "/home": (context) => HomeScreen(),
+            "/transform": (context) => TransformScreen(), // <-- nueva ruta
+          },
           title: 'Material app',
           home: LoginScreen(),
         );

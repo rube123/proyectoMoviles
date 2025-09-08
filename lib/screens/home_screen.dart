@@ -1,6 +1,7 @@
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/value_listener.dart';
+import 'transform_screen.dart'; // Ajusta la ruta si es necesario
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,6 +12,22 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   var _selectedTab = _SelectedTab.home;
+
+  Widget _getBodyForTab() {
+    switch (_selectedTab) {
+      case _SelectedTab.home:
+        return Center(child: Text("Menu de opciones"));
+      case _SelectedTab.favorite:
+        return Center(child: Text("Tus favoritos"));
+      case _SelectedTab.search:
+        // Aquí puedes mostrar tu pantalla de Transform
+        return TransformScreen();
+      case _SelectedTab.person:
+        return Center(child: Text("Perfil"));
+      default:
+        return Center(child: Text("Menu de opciones"));
+    }
+  }
 
   void _handleIndexChanged(int i) {
     setState(() {
@@ -46,7 +63,9 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
 
       drawer: Drawer(),
-      body: Center(child: Text("Menu de opciones")),
+      //body: Center(child: Text("Menu de opciones")),
+      body: _getBodyForTab(),
+
       bottomNavigationBar: Padding(
         padding: EdgeInsets.only(bottom: 10),
         child: DotNavigationBar(
